@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "482954937972",
+    "project_id": "majam-ed3b4",
+    "storage_bucket": "majam-ed3b4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:482954937972:android:a375da9cafd9de52b03321",
+        "android_client_info": {
+          "package_name": "com.shubham.majam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "482954937972-2us2p7k2ihg8nkc3c7vgt3rjrugraehm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6JnEptUgWwT6THR9T6DLK7fjhHgToJfQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "482954937972-2us2p7k2ihg8nkc3c7vgt3rjrugraehm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
