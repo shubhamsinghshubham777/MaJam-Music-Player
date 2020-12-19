@@ -12,7 +12,6 @@ import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.shubham.majam.data.remote.MusicDatabase
 import com.shubham.majam.exoplayer.State.*
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
@@ -25,7 +24,6 @@ class FirebaseMusicSource @Inject constructor(
 
     var songs = emptyList<MediaMetadataCompat>()
 
-    @InternalCoroutinesApi
     suspend fun fetchMediaData() = withContext(Dispatchers.IO) {
         state = STATE_INITIALIZING
         val allSongs = musicDatabase.getAllSongs()
@@ -65,13 +63,12 @@ class FirebaseMusicSource @Inject constructor(
                 .setIconUri(it.description.iconUri)
                 .build()
         MediaBrowserCompat.MediaItem(desc, FLAG_PLAYABLE)
-    }
+    }.toMutableList()
 
-    @InternalCoroutinesApi
     private var state: State = STATE_CREATED
         set(value) {
             if(value == STATE_INITIALIZED || value == STATE_ERROR) {
-                kotlinx.coroutines.internal.synchronized (onReadyListeners) {
+                synchronized (onReadyListeners) {
                     field = value
                     onReadyListeners.forEach { listener ->
                         listener(state == STATE_INITIALIZED)
@@ -82,7 +79,6 @@ class FirebaseMusicSource @Inject constructor(
             }
         }
 
-    @InternalCoroutinesApi
     fun whenReady(action: (Boolean)-> Unit): Boolean {
         if(state == STATE_CREATED || state == STATE_INITIALIZING) {
             onReadyListeners += action
