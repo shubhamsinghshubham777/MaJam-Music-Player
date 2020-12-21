@@ -14,37 +14,10 @@ import javax.inject.Inject
 
 class SongAdapter @Inject constructor(
         private val glide: RequestManager
-) : RecyclerView.Adapter<SongAdapter.SongViewHolder>() {
+) : BaseSongAdapter(R.layout.list_item) {
+    override val differ = AsyncListDiffer(this, diffCallBack)
 
-    class SongViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
-
-    private val diffCallBack = object : DiffUtil.ItemCallback<Song>() {
-        override fun areItemsTheSame(oldItem: Song, newItem: Song): Boolean {
-            return oldItem.mediaID == newItem.mediaID
-        }
-
-        override fun areContentsTheSame(oldItem: Song, newItem: Song): Boolean {
-            return oldItem.hashCode() == newItem.hashCode()
-        }
-    }
-
-    private val differ = AsyncListDiffer(this, diffCallBack)
-
-    var songs: List<Song>
-        get() = differ.currentList
-        set(value) = differ.submitList(value)
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SongViewHolder {
-        return SongViewHolder(
-                LayoutInflater.from(parent.context).inflate(
-                        R.layout.list_item,
-                        parent,
-                        false
-                )
-        )
-    }
-
-    override fun onBindViewHolder(holder: SongViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: BaseSongAdapter.SongViewHolder, position: Int) {
         val song = songs[position]
         holder.itemView.apply {
             tvPrimary.text = song.title
@@ -57,15 +30,5 @@ class SongAdapter @Inject constructor(
                 }
             }
         }
-    }
-
-    private var onItemClickListener: ((Song) -> Unit)? = null
-
-    fun setOnItemClickListener(listener: (Song) -> Unit) {
-        onItemClickListener = listener
-    }
-
-    override fun getItemCount(): Int {
-        return songs.size
     }
 }
