@@ -24,11 +24,15 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        /* We didn't use the 'by' keyword to initialise the viewModel here since we don't want to
+        * bind the viewModel to the Fragment Lifecycle. Instead, we want to bind it to the Activity
+        * lifecycle. Therefore, we will initialise the viewModel using 'by' keyword in the activity itself. */
         mainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
         setupRecyclerView()
         subscribeToObservers()
 
-        songAdapter.setOnItemClickListener {
+        songAdapter.setItemClickListener {
             mainViewModel.playOrToggleSong(it)
         }
     }

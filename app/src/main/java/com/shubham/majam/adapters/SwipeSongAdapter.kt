@@ -4,7 +4,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import com.shubham.majam.R
 import kotlinx.android.synthetic.main.list_item.view.*
 
-class SwipeSongAdapter : BaseSongAdapter(R.layout.list_item) {
+class SwipeSongAdapter : BaseSongAdapter(R.layout.swipe_item) {
     override val differ = AsyncListDiffer(this, diffCallBack)
 
     override fun onBindViewHolder(holder: BaseSongAdapter.SongViewHolder, position: Int) {
