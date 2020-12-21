@@ -1,8 +1,9 @@
-package com.shubham.majam
+package com.shubham.majam.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bumptech.glide.RequestManager
+import com.shubham.majam.R
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
