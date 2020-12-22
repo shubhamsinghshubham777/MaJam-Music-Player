@@ -1,8 +1,9 @@
 package com.shubham.majam.exoplayer
 
+import android.os.SystemClock
 import android.support.v4.media.session.PlaybackStateCompat
+import android.support.v4.media.session.PlaybackStateCompat.STATE_PLAYING
 
-//inline here refers to the get() (getter function)
 inline val PlaybackStateCompat.isPrepared
     get() = state == PlaybackStateCompat.STATE_BUFFERING ||
             state == PlaybackStateCompat.STATE_PLAYING ||
@@ -16,3 +17,10 @@ inline val PlaybackStateCompat.isPlayEnabled
     get() = actions and PlaybackStateCompat.ACTION_PLAY != 0L ||
             (actions and PlaybackStateCompat.ACTION_PLAY_PAUSE != 0L &&
                     state == PlaybackStateCompat.STATE_PAUSED)
+
+inline val PlaybackStateCompat.currentPlaybackPosition: Long
+    get() = if(state == STATE_PLAYING) {
+        val timeDelta = SystemClock.elapsedRealtime() - lastPositionUpdateTime /* takes current
+        milliseconds and subtracts the last provided time by the exoplayer */
+        (position + (timeDelta * playbackSpeed)).toLong()
+    } else position
