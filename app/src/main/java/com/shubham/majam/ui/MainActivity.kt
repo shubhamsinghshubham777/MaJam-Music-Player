@@ -3,6 +3,7 @@ package com.shubham.majam.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.media.session.PlaybackStateCompat
+import android.view.LayoutInflater
 import androidx.activity.viewModels
 import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
@@ -39,6 +40,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setTheme(R.style.Theme_MaJam)
         setContentView(R.layout.activity_main)
 
         subscribeToObservers()
