@@ -18,13 +18,38 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/speaker" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            android:layout_gravity="end"
+            app:lottie_rawRes="@raw/speaker" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/poppins_black"
+            android:text="MaJam"
+            android:textColor="@color/white"
+            android:textSize="35dp" />
+
         <fragment
             android:id="@+id/navHostFragment"
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="50dp"
             app:defaultNavHost="true"
-            app:navGraph="@navigation/nav_graph"/>
+            app:navGraph="@navigation/nav_graph" />
 
     </FrameLayout>
 

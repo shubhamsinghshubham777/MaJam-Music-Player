@@ -1,56 +1,47 @@
-plugins {
-    id 'com.android.application'
-    id 'kotlin-android'
-    id 'kotlin-android-extensions'
-    id 'kotlin-kapt'
-    id 'dagger.hilt.android.plugin'
-    id 'com.google.gms.google-services'
+# MaJam Music Player
+------------
+A beautiful looking music player for Android illustrating the MVVM coding architecture and the best practices for developing native Android applications using Kotlin.
 
-}
+### Features 
 
-android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.2"
+------------
 
-    defaultConfig {
-        applicationId "com.shubham.majam"
-        minSdkVersion 21
-        targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+1. A new song-playlist automatically updated everyday! :fire:
+2. No need to download songs (All songs will be available on an online server)
+3. Best sound quality (Lossless FLAC files, no compromises here)
+4. Attractive UI :heart:
+5. Low app-size
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
+------------
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
-}
+**Disclaimer**: This app will use a lot of data since it will be streaming high-quality lossless FLAC files. Therefore the users are requested NOT to use it on limited mobile/WiFi data plans.
 
-dependencies {
+------------
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.3.2'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.google.android.material:material:1.2.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    testImplementation 'junit:junit:4.13.1'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+### Screenshots
 
-    // Material Design
-    implementation 'com.google.android.material:material:1.3.0-alpha02'
+------------
 
+| | | |
+|:-------------------------:|:-------------------------:|:-------------------------:|
+|<img width="1604" alt="screen shot 2017-08-07 at 12 18 15 pm" src="https://github.com/shubhamsinghshubham777/MaJam/blob/master/Screenshots/ForegroundService.png"> |  <img width="1604" alt="screen shot 2017-08-07 at 12 18 15 pm" src="https://github.com/shubhamsinghshubham777/MaJam/blob/master/Screenshots/HomeFragment.png">|<img width="1604" alt="screen shot 2017-08-07 at 12 18 15 pm" src="https://github.com/shubhamsinghshubham777/MaJam/blob/master/Screenshots/SongFragment.png">|
+
+------------
+
+### Tools Used
+
+------------
+1. Kotlin
+2. [Google Firebase](https://firebase.google.com/ "Google Firebase") for backend
+3. [Airbnb Lottie](https://airbnb.io/lottie/#/ "Airbnb Lottie") for animations
+4. [Glide](https://github.com/bumptech/glide "Glide Image Loading Library") Image Loading Library
+5. [ExoPlayer](https://github.com/google/ExoPlayer "Google ExoPlayer")
+6. [Dagger Hilt](https://dagger.dev/hilt/ "Dagger Hilt")
+------------
+
+### Dependencies
+
+------------
     // Architectural Components
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
 
@@ -103,5 +94,8 @@ dependencies {
     api "com.google.android.exoplayer:exoplayer-ui:2.11.8"
     api "com.google.android.exoplayer:extension-mediasession:2.11.8"
 
+    //Lottie
     implementation 'com.airbnb.android:lottie:3.5.0'
-}
+	
+	//Material Design
+    implementation "com.google.android.material:material:1.3.0-alpha02"
